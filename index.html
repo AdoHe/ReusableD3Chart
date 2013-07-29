@@ -8,6 +8,7 @@
 		<script type="text/javascript" src="/JavaScript/timeSeriesChart.js"></script>
 		<script type="text/javascript" src="/JavaScript/histogramChart.js"></script>
 		<script type="text/javascript" src="/JavaScript/pieChart.js"></script>
+		<script type="text/javascript" src="/JavaScript/lineChart.js"></script>
 		<style type="text/css">
 			div.bar {
 				display: inline-block;
@@ -31,6 +32,12 @@
 
 			.bars rect {
 				fill: steelblue;
+			}
+
+			.line {
+				fill: none;
+				stroke: steelblue;
+				stroke-width: 1.5px;
 			}
 		</style>
 	</head>
@@ -310,7 +317,7 @@
 					.tickFormat(d3.format('.02f')));*/
 		</script>
 		<script type="text/javascript">
-			var piechart = pieChart()
+			/*var piechart = pieChart()
 				.x(function(d){return d.age; })
 				.y(function(d){return +d.population; });
 
@@ -318,7 +325,19 @@
 				d3.select('#example')
 					.datum(data)
 					.call(piechart);
-			})
+			})*/
+		</script>
+		<script type="text/javascript">
+			var formatDate = d3.time.format('%b %Y');
+			var lineChart = lineChart()
+				.x(function(d){return formatDate.parse(d.date); })
+				.y(function(d){return +d.price; });
+
+			d3.csv('/Data/sp500.csv', function(data){
+				d3.select('div#histogram')
+					.datum(data)
+					.call(lineChart);
+			});
 		</script>
 	</body>
 </html>

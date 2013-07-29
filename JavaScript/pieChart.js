@@ -3,6 +3,8 @@ function pieChart(){
 		width = 300,
 		height = 250,
 		radius = Math.min(width, height) / 2,
+		xValue = function(d){return d[0]; },
+		yValue = function(d){return d[1]; },
 		arc = d3.svg.arc()
 			.outerRadius(radius - 10)
 			.innerRadius(0)
@@ -13,8 +15,7 @@ function pieChart(){
 
 	function chart(selection){
 		selection.each(function(data){
-			console.log(data);
-			
+
 			//Update the pie-data
 			pie.sort(null).value(yValue);
 
@@ -41,6 +42,12 @@ function pieChart(){
 			gg.append('path')
 				.attr('d', arc)
 				.style('fill', function(d){return color(d.data.age); });
+
+			gg.append('text')
+				.attr('transform', function(d){return 'translate(' + arc.centroid(d) + ')'; })
+				.attr('dy', '.35em')
+				.style('text-anchor', 'middle')
+				.text(function(d){return d.data.age; });
 		});
 	}
 	
@@ -56,6 +63,20 @@ function pieChart(){
 		yValue = _;
 
 		return this;
+	}
+
+	chart.width = function(_){
+		if(!arguments.length) return width;
+		width = _;
+		
+		return chart;
+	}
+
+	chart.height = function(_){
+		if(!arguments.length) return height;
+		height = _;
+
+		return chart;
 	}
 
 	return chart;

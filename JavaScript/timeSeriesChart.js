@@ -50,14 +50,14 @@ function timeSeriesChart(){
 			g.select('.area')
 				.attr('d', area.y0(yScale.range()[0]));
 
-			//Update the line path
-			g.select('.line')
-				.attr('d', line);
-
 			//Update the x-axis
 			g.select('.x.axis')
 				.attr('transform', 'translate(0,' + yScale.range()[0] + ')')
 				.call(xAxis);
+				
+			//Update the line path
+			g.select('.line')
+				.attr('d', line);
 		});
 	}
 
