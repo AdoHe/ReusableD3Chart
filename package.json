@@ -1,0 +1,32 @@
+{
+	"name": "ReusableD3Chart",
+	"version": "0.1.0",
+	"description": "A collection for reusable d3.js chart",
+	"keywords": [
+		"data",
+		"d3.js",
+		"visualization",
+		"chart"
+	],
+	"author": {
+		"name": "He Tony",
+		"email": "coolhzb@163.com"
+	},
+	"scripts": {
+		"start": "node server.js"
+	},
+	"engines": {
+		"node": ">=0.8.0"
+	},
+	"license": [
+		{
+			"type": "MIT"
+		}
+	],
+	"dependencies": {
+		"mocha": "*",
+		"should": "*",
+		"node-patch": "*",
+		"supertest": "*"
+	}
+}
