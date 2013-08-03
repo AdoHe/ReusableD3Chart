@@ -9,6 +9,7 @@
 		<script type="text/javascript" src="/JavaScript/histogramChart.js"></script>
 		<script type="text/javascript" src="/JavaScript/pieChart.js"></script>
 		<script type="text/javascript" src="/JavaScript/lineChart.js"></script>
+		<script type="text/javascript" src="/JavaScript/barChart.js"></script>
 		<style type="text/css">
 			div.bar {
 				display: inline-block;
@@ -328,7 +329,7 @@
 			})*/
 		</script>
 		<script type="text/javascript">
-			var formatDate = d3.time.format('%b %Y');
+			/*var formatDate = d3.time.format('%b %Y');
 			var lineChart = lineChart()
 				.x(function(d){return formatDate.parse(d.date); })
 				.y(function(d){return +d.price; });
@@ -337,6 +338,17 @@
 				d3.select('div#histogram')
 					.datum(data)
 					.call(lineChart);
+			});*/
+		</script>
+		<script type="text/javascript">
+			var barChart = barChart()
+				.x('letter')
+				.y('frequency');
+			
+			d3.tsv('/Data/data.tsv', function(data){
+				d3.select('#histogram')
+					.datum(data)
+					.call(barChart);
 			});
 		</script>
 	</body>

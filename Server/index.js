@@ -24,6 +24,12 @@ var server = http.createServer(function(req, res) {
 			contentType = 'text/csv';
 			filePath = '.' + filePath;
 			break;
+		case '.tsv':
+			contentType = 'text/tsv';
+			filePath = '.' + filePath;
+			break;
+		default:
+			break;
 	}
 
 	fs.exists(filePath, function(exits){
