@@ -10,6 +10,7 @@
 		<script type="text/javascript" src="/JavaScript/pieChart.js"></script>
 		<script type="text/javascript" src="/JavaScript/lineChart.js"></script>
 		<script type="text/javascript" src="/JavaScript/barChart.js"></script>
+		<script type="text/javascript" src="/JavaScript/HelloWorld.js"></script>
 		<style type="text/css">
 			div.bar {
 				display: inline-block;
@@ -341,7 +342,7 @@
 			});*/
 		</script>
 		<script type="text/javascript">
-			var barChart = barChart()
+			/*var barChart = barChart()
 				.x('letter')
 				.y('frequency');
 			
@@ -349,7 +350,18 @@
 				d3.select('#histogram')
 					.datum(data)
 					.call(barChart);
+			});*/
+		</script>
+		<script type="text/javascript">
+			var dataset = [0, 1, 3, 4, 5];
+
+			var table = d3.edge.table().fontSize(10).fontColor('green');
+			table.on('customHover', function(d, i){
+				console.log('custom hover' + d, i);
 			});
+			d3.select('#histogram')
+				.datum(dataset)
+				.call(table);
 		</script>
 	</body>
 </html>
