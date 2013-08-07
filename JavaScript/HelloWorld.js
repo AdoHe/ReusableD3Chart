@@ -14,7 +14,7 @@ d3.edge.table = function(){
 					'font-size': fontSize + 'px',
 					color: fontColor
 				})
-				.html('Hello World' + _data)
+				.html('Hello World ' + _data)
 				.on('click', dispatch.customHover);
 		});
 	}
