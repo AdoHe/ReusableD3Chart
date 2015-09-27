@@ -41,6 +41,16 @@
 				stroke: steelblue;
 				stroke-width: 1.5px;
 			}
+            
+            .overlay {
+                fill: none;
+                pointer-events: all;
+            }
+
+            .focus circle {
+                fill: none;
+                stroke: steelblue;
+            }
 		</style>
 	</head>
 	<body>
@@ -89,7 +99,7 @@
 					   .append('svg')
 					   .attr('width', width)
 					   .attr('height', height);
-			
+
 			svg.selectAll('circle')
 				.data(dataset)
 				.enter()
@@ -116,11 +126,11 @@
 
 			var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
                 11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
-			
+
 			var xScale = d3.scale.ordinal()
 							.domain(d3.range(dataset.length))
 							.rangeRoundBands([0, width], 0.05);
-			
+
 			var yScale = d3.scale.linear()
 							.domain([d3.min(dataset), d3.max(dataset)])
 							.range([50, height]);
@@ -129,7 +139,7 @@
 					   .append('svg')
 					   .attr('width', width)
 					   .attr('height', height);
-			
+
 			//Add bar charts
 			svg.selectAll('rect')
 				.data(dataset)
@@ -140,7 +150,7 @@
 				})
 				.attr('y', function(d){
 					return height - yScale(d);
-				}) 
+				})
 				.attr('width', xScale.rangeBand())
 				.attr('height', function(d){
 					return yScale(d);
@@ -170,7 +180,7 @@
 			/*d3.select('#trigger').on('click', function(){
 				dataset = [ 11, 12, 15, 20, 18, 17, 16, 18, 23, 25,
 				 5, 10, 13, 19, 21, 25, 22, 18, 15, 13 ];
-				
+
 				svg.selectAll('rect')
 					.data(dataset)
 					.attr('y', function(d){
@@ -202,7 +212,7 @@
 					   .append('svg')
 					   .attr('width', width)
 					   .attr('height', height);
-			
+
 			svg.selectAll('circle')
 				.data(dataset)
 				.enter()
@@ -235,11 +245,11 @@
 								return d[0];
 							})])
 							.range([padding, width - padding]);
-			
+
 			var yScale = d3.scale.linear()
 							.domain([0, d3.max(dataset, function(d){return d[1]; })])
 							.range([height - padding, padding]);
-			
+
 			var xAxis = d3.svg.axis()
 							.scale(xScale)
 							.orient('bottom');
@@ -258,7 +268,7 @@
 					return yScale(d[1]);
 				})
 				.attr('r', 5);
-			
+
 			svg.selectAll('text')
 				.data(dataset)
 				.enter()
@@ -289,7 +299,7 @@
 			var chart = timeSeriesChart()
 				.x(function(d){return formatDate.parse(d.date); })
 				.y(function(d){return +d.price; });
-			
+
 			chart.height(200);
 
 			d3.csv('/Data/sp500.csv', function(data){
@@ -330,22 +340,22 @@
 			})*/
 		</script>
 		<script type="text/javascript">
-			/*var formatDate = d3.time.format('%b %Y');
+			var formatDate = d3.time.format('%b %Y');
 			var lineChart = lineChart()
 				.x(function(d){return formatDate.parse(d.date); })
 				.y(function(d){return +d.price; });
 
-			d3.csv('/Data/sp500.csv', function(data){
+			d3.tsv('/Data/data2.tsv', function(data){
 				d3.select('div#histogram')
 					.datum(data)
 					.call(lineChart);
-			});*/
+			});
 		</script>
 		<script type="text/javascript">
 			/*var barChart = barChart()
 				.x('letter')
 				.y('frequency');
-			
+
 			d3.tsv('/Data/data.tsv', function(data){
 				d3.select('#histogram')
 					.datum(data)
@@ -353,7 +363,7 @@
 			});*/
 		</script>
 		<script type="text/javascript">
-			var dataset = [0, 1, 3, 4, 5];
+			/*var dataset = [0, 1, 3, 4, 5];
 
 			var table = d3.edge.table().fontSize(10).fontColor('green');
 			table.on('customHover', function(d, i){
@@ -361,7 +371,7 @@
 			});
 			d3.select('#histogram')
 				.datum(dataset)
-				.call(table);
+				.call(table);*/
 		</script>
 	</body>
 </html>
