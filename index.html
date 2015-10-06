@@ -3,7 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Interactive Data Visualization with D3.js</title>
-		<script type="text/javascript" src="/d3/d3.v3.js"></script>
+		<script type="text/javascript" src="/d3/d3.min.js"></script>
+        <script type="text/javascript" src="/c3/c3.min.js"></script>
 		<script type="text/javascript" src="/JavaScript/jquery-1.7.js"></script>
 		<script type="text/javascript" src="/JavaScript/timeSeriesChart.js"></script>
 		<script type="text/javascript" src="/JavaScript/histogramChart.js"></script>
@@ -11,6 +12,7 @@
 		<script type="text/javascript" src="/JavaScript/lineChart.js"></script>
 		<script type="text/javascript" src="/JavaScript/barChart.js"></script>
 		<script type="text/javascript" src="/JavaScript/HelloWorld.js"></script>
+        <link href="/c3/c3.min.css" rel="stylesheet" type="text/css">
 		<style type="text/css">
 			div.bar {
 				display: inline-block;
@@ -41,7 +43,7 @@
 				stroke: steelblue;
 				stroke-width: 1.5px;
 			}
-            
+
             .overlay {
                 fill: none;
                 pointer-events: all;
@@ -55,7 +57,11 @@
 	</head>
 	<body>
 		<p id="example"></p>
-		<div id="histogram"></div>
+		<div class='container'>
+<h1 class='title'>Custom Legend</h1>
+<div class='chart'>
+<div id='chart'></div>
+</div>
 		<p id="trigger">Click here to update the chart with new data</p>
 		<script type="text/javascript">
 			//var dataset = [1,2,3,4,5];
@@ -340,7 +346,7 @@
 			})*/
 		</script>
 		<script type="text/javascript">
-			var formatDate = d3.time.format('%b %Y');
+			/*var formatDate = d3.time.format('%b %Y');
 			var lineChart = lineChart()
 				.x(function(d){return formatDate.parse(d.date); })
 				.y(function(d){return +d.price; });
@@ -349,7 +355,7 @@
 				d3.select('div#histogram')
 					.datum(data)
 					.call(lineChart);
-			});
+			});*/
 		</script>
 		<script type="text/javascript">
 			/*var barChart = barChart()
@@ -373,6 +379,7 @@
 				.datum(dataset)
 				.call(table);*/
 		</script>
+        <script type="text/javascript" src="/JavaScript/chart_pie.js"></script>
 	</body>
 </html>
 
